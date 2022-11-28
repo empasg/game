@@ -54,20 +54,20 @@ public class PlayerFight : MonoBehaviour
         if (!MobsSorted && CanStartFight)
         {
             
-            Collider[] colliders = Physics.OverlapSphere(transform.position,1f);
+            Collider[] colliders = Physics.OverlapSphere(transform.position,3f);
             
             foreach (Collider colider in colliders)
             {
 
-                if (colider.gameObject.name == "Platform")
+                if (colider.gameObject.name == "Trigger")
                 {
-                    foreach(Transform child in colider.gameObject.transform)
+                    foreach(Transform child in colider.gameObject.transform.parent)
                     {
                         
                         if (child.gameObject.name.Contains("SwordMan") || child.gameObject.name.Contains("ArcherWomen") )
                         {
                             mobs.Add(child.GetChild(0).gameObject);
-                            
+                            print(1);
                         }
 
                     }
